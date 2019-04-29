@@ -526,7 +526,10 @@ export class Characters extends Scene {
 		};
 		let lights = this.url_params.get('lights');
 		if (null != lights) {
-			this.buttons.lights.on = true;
+			this.lights_on();
+		}
+		else {
+			this.lights_off();
 		}
 		let creators = this.url_params.get('creators');
 		if (creators) {
@@ -1000,8 +1003,25 @@ export class Characters extends Scene {
 		current_alternate.base.transform.scale.x = this.selected_scale;
 		current_alternate.base.transform.scale.y = this.selected_scale;
 	}
+	set_lights_button() {
+		if (this.buttons.lights.on) {
+			this.buttons.lights.sprite.set_image(this.buttons.lights.original);
+		}
+		else {
+			this.buttons.lights.sprite.set_image(this.buttons.lights.dim);
+		}
+	}
+	lights_on() {
+		this.buttons.lights.on = true;
+		this.set_lights_button();
+	}
+	lights_off() {
+		this.buttons.lights.on = false;
+		this.set_lights_button();
+	}
 	toggle_lights() {
 		this.buttons.lights.on = !this.buttons.lights.on;
+		this.set_lights_button();
 		this.set_all_sprites();
 	}
 	toggle_fullscreen() {
@@ -1192,7 +1212,7 @@ export class Characters extends Scene {
 			total -= 1;
 		}
 		// lights always on for random
-		this.buttons.lights.on = true;
+		this.lights_on();
 		this.subselect(chosen_alternate_ids);
 		// add chosen characters to querystring
 		let querystring = chosen_alternate_ids.join(',');
@@ -1278,7 +1298,7 @@ export class Characters extends Scene {
 		// since they aren't intrinsic to a user-specified filter
 		this.url_params.delete('characters');
 		// lights off when clearing filter
-		this.buttons.lights.on = false;
+		this.lights_off();
 		this.filter = {};
 		this.apply_filter();
 		this.place_filtered_characters();
@@ -1367,9 +1387,10 @@ export class Characters extends Scene {
 			) {
 				continue;
 			}
-			// skip dimmed buttons
+			// skip non-lights dimmed buttons
 			if (
-				this.buttons[name].dim
+				'lights' != name
+				&& this.buttons[name].dim
 				&& this.buttons[name].sprite.image == this.buttons[name].dim
 			) {
 				continue;
@@ -1590,7 +1611,7 @@ export class Characters extends Scene {
 			details: !this.character_details.disabled,
 		};
 		// lights off
-		this.buttons.lights.on = false;
+		this.lights_off();
 		// disable details
 		this.character_details.disable();
 		// set sprites
