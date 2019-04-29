@@ -1599,6 +1599,7 @@ export class Characters extends Scene {
 		this.pip.disable();
 		// disable interface buttons
 		this.buttons.alternate.disable();
+		this.buttons.link.disable();
 		this.buttons.details.disable();
 		this.buttons.random_pair.disable();
 		this.buttons.random_solo.disable();
@@ -1662,6 +1663,7 @@ export class Characters extends Scene {
 		// enable pip
 		this.pip.enable();
 		// enable interface buttons
+		this.buttons.link.enable();
 		this.buttons.details.enable();
 		this.buttons.random_pair.enable();
 		this.buttons.random_solo.enable();
