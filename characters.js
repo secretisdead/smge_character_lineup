@@ -1501,8 +1501,8 @@ export class Characters extends Scene {
 			this.focus_character(this.filtered_characters[this.current_index], this.focus_duration);
 		}
 
-		// arrow left/right for navigation
-		if (this.smge.input.pressed('ArrowLeft')) {
+		// arrow left/right or mousewheel for navigation
+		if (this.smge.input.pressed('ArrowLeft') || 0 > this.smge.input.mousewheel) {
 			console.log('left arrow in characters');
 			this.current_index -= 1;
 			if (0 > this.current_index) {
@@ -1510,7 +1510,7 @@ export class Characters extends Scene {
 			}
 			this.focus_character(this.filtered_characters[this.current_index], this.focus_duration);
 		}
-		if (this.smge.input.pressed('ArrowRight')) {
+		if (this.smge.input.pressed('ArrowRight') || 0 < this.smge.input.mousewheel) {
 			console.log('right arrow in characters');
 			this.current_index += 1;
 			if (this.current_index > this.filtered_characters.length - 1) {
