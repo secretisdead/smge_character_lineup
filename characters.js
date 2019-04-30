@@ -1220,13 +1220,34 @@ export class Characters extends Scene {
 		this.set_querystring();
 	}
 	set_querystring() {
+		// lights
 		if (this.buttons.lights.on) {
-			// ensure lights is part of querystring
 			this.url_params.set('lights', '');
 		}
 		else {
-			// ensure lights is not part of querystring
 			this.url_params.delete('lights');
+		}
+		if (this.filter_menu) {
+			// creators
+			if (
+				0 < this.filter.creators.length
+				&& this.filter.creators.length < this.filter_menu.creators.length
+			) {
+				this.url_params.set('creators', this.filter.creators.join(','));
+			}
+			else {
+				this.url_params.delete('creators');
+			}
+			// settings
+			if (
+				0 < this.filter.settings.length
+				&& this.filter.settings.length < this.filter_menu.settings.length
+			) {
+				this.url_params.set('settings', this.filter.settings.join(','));
+			}
+			else {
+				this.url_params.delete('settings');
+			}
 		}
 		let url_params_string = this.url_params.toString();
 		// remove trailing = from querystring
@@ -1297,9 +1318,14 @@ export class Characters extends Scene {
 		// remove specified characters from querystring
 		// since they aren't intrinsic to a user-specified filter
 		this.url_params.delete('characters');
+		this.url_params.delete('creators');
+		this.url_params.delete('settings');
 		// lights off when clearing filter
 		this.lights_off();
-		this.filter = {};
+		this.filter = {
+			creators: [],
+			settings: [],
+		};
 		this.apply_filter();
 		this.place_filtered_characters();
 		this.refocus();
