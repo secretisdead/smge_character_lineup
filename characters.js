@@ -1594,11 +1594,31 @@ export class Characters extends Scene {
 						'cursor'
 					)
 				) {
-					this.cursor.change_state('pointer');
-					// character clicks
-					if (this.smge.input.released('m1')) {
-						console.log('clicked character ' + character.id);
-						this.focus_character(character, this.focus_duration);
+					// hovering currently selected character
+					if (character.id == this.filtered_characters[this.current_index].id) {
+						let alt_count = 0;
+						for (let i in character.alternates) {
+							if (!character.alternates[i].filtered) {
+								alt_count += 1;
+							}
+						}
+						// character has alts
+						if (1 < alt_count) {
+							this.cursor.change_state('pointer');
+							if (this.smge.input.released('m1')) {
+								console.log('clicked selected character ' + character.id + ' with alts');
+								this.next_alternate(character);
+							}
+						}
+					}
+					// hovering other character
+					else {
+						this.cursor.change_state('pointer');
+						// character clicks
+						if (this.smge.input.released('m1')) {
+							console.log('clicked non-selected character ' + character.id);
+							this.focus_character(character, this.focus_duration);
+						}
 					}
 				}
 			}
