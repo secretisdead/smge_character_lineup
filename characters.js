@@ -29,8 +29,8 @@ export class Characters extends Scene {
 				cover_type_in: 'cut',
 				cover_duration_in: 1,
 				cover_type_out: 'fade',
-				cover_duration_out: 500,
-				min_cover_duration: 50,
+				cover_duration_out: 250,
+				min_cover_duration: 0,
 			}
 		);
 		// get characters data uri from querystring
