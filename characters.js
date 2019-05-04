@@ -116,6 +116,10 @@ export class Characters extends Scene {
 		//TODO set up interface select and highlight sounds since loading is finished
 		//TODO this.interface_select_sound = this.smge.resource_manager.resources['interface_select'];
 		//TODO this.interface_highlight_sound = this.smge.resource_manager.resources['interface_highlight'];
+		this.focus_sound = null;
+		if (this.smge.resource_manager.resources['focus_sound']) {
+			this.focus_sound = this.smge.resource_manager.resources['focus_sound'];
+		}
 
 		// set up sprite fonts
 		console.log(' sprite fonts');
@@ -1156,6 +1160,9 @@ export class Characters extends Scene {
 			this.cursor.anchor.transform.y,
 			duration
 		);
+		if (this.focus_sound) {
+			this.smge.audio.play_once(this.focus_sound);
+		}
 	}
 	subselect(alternate_ids) {
 		this.filtered_characters = [];
