@@ -1438,7 +1438,8 @@ export class Characters extends Scene {
 						break;
 					case 'details':
 						console.log('details button');
-						this.character_details.toggle_disabled();
+						this.details = !this.details;
+						this.show_details();
 						break;
 					case 'random_pair':
 						console.log('random pair button');
