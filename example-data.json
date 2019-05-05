@@ -1,0 +1,137 @@
+{
+	"sheet_name": "your sheet name",
+
+	"name_prefix": "text which appears before all names",
+	"details_prefix": "text which appears before all details",
+
+	"background_color": "#00000000",
+	"text_color": "#ffffff",
+	"overlay_color": "#00000080",
+	"camera_height": 80,
+	"spacing": 8,
+	"pip_offset": 12,
+	"pip_maximum_swing": 1,
+	"pip_impulse": 0.075,
+	"alternate_button_offset": 6,
+	"ui_padding": 4,
+	"title_padding": 1,
+	"details_padding": 12,
+	"focus_duration": 125,
+
+	"resources": [
+		{"id": "title_font_data", "type": "json", "url": "https://url.to/your/title_font_data.json"},
+		{"id": "title_font_spritesheet", "type": "image", "url": "https://url.to/your/title_font_spritesheet.png"},
+		{"id": "details_font_data", "type": "json", "url": "https://url.to/your/details_font_data.json"},
+		{"id": "details_font_spritesheet", "type": "image", "url": "https://url.to/your/details_font_spritesheet.png"},
+		{"id": "checkers", "type": "image", "url": "https://url.to/your/checkers.png"},
+		{"id": "interface_spritesheet", "type": "image", "url": "https://url.to/your/interface_spritesheet.png"},
+		{"id": "focus_sound", "type": "audio", "url": "https://url.to/your/focus_sound.wav"},
+		{"id": "filters_spritesheet", "type": "image", "url": "https://url.to/your/filters_spritesheet.png"},
+		{"id": "characters_spritesheet", "type": "image", "url": "https://url.to/your/characters_spritesheet.png"},
+		{"id": "portraits_spritesheet", "type": "image", "url": "https://url.to/your/portraits_spritesheet.png"}
+	],
+
+	"interface": {
+		"resource": "interface_spritesheet",
+		"cursor_default": {
+			"sx": 0,
+			"sy": 0,
+			"width": 11,
+			"height": 16,
+			"origin": {
+				"x": 0,
+				"y": 0
+			}
+		},
+		"cursor_pointer": {
+			"sx": 11,
+			"sy": 0,
+			"width": 13,
+			"height": 16,
+			"origin": {
+				"x": 4,
+				"y": 0
+			}
+		},
+		"pip": {
+			"sx": 24,
+			"sy": 0,
+			"width": 8,
+			"height": 6,
+			"origin": {
+				"x": 3,
+				"y": 6
+			}
+		},
+		"alternate": {"sx": 32, "sy": 0, "width": 16, "height": 16},
+		"link": {"sx": 48, "sy": 0, "width": 16, "height": 16},
+		"details": {"sx": 64, "sy": 0, "width": 16, "height": 16},
+		"random_pair": {"sx": 80, "sy": 0, "width": 16, "height": 16},
+		"random_solo": {"sx": 96, "sy": 0, "width": 16, "height": 16},
+		"lights": {"sx": 112, "sy": 0, "width": 16, "height": 16},
+		"clear": {"sx": 128, "sy": 0, "width": 16, "height": 16},
+		"filter": {"sx": 144, "sy": 0, "width": 16, "height": 16},
+		"fullscreen": {"sx": 160, "sy": 0, "width": 16, "height": 16},
+		"exit_fullscreen": {"sx": 176, "sy": 0, "width": 16, "height": 16}
+	},
+
+	"creators": {
+		"resource": "filters_spritesheet",
+		"items": [
+			{
+				"id": "you",
+				"name": "Your Name",
+				"sprite": {"sx": 0, "sy": 0, "width": 56, "height": 56}
+			}
+		]
+	},
+
+	"settings": {
+		"resource": "filters_spritesheet",
+		"items": [
+			{
+				"id": "your_characters_setting",
+				"name": "Your Characters' Setting Name",
+				"sprite": {"sx": 0, "sy": 56, "width": 56, "height": 56}
+			}
+		]
+	},
+
+	"characters": {
+		"character1_name": [
+			{
+				"id": "character1",
+				"name": "Character 1 Name",
+				"creators": ["you"],
+				"settings": ["your_characters_setting"],
+				"link": "https://url.to/about_page_of_character1",
+				"portrait": {"resource": "portraits_spritesheet", "sx": 0, "sy": 0, "width": 192, "height": 256},
+				"base": {"resource": "characters_spritesheet", "sx": 0, "sy": 128, "width": 64, "height": 128, "origin": {"x": 32, "y": 128}},
+				"details": "Some text about character 1"
+			}
+		],
+		"character2": [
+			{
+				"id": "character2_alt1",
+				"name": "Character 2 Alt 1 Name",
+				"creators": ["you"],
+				"settings": ["your_characters_setting"],
+				"portrait": {"resource": "portraits_spritesheet", "sx": 192, "sy": 0, "width": 192, "height": 256},
+				"base": {"resource": "characters_spritesheet", "sx": 64, "sy": 140, "width": 48, "height": 116, "origin": {"x": 24, "y": 116}},
+				"details": "Some text about character 2 (specifically alt 1)"
+			},
+			{
+				"id": "character2_alt2",
+				"name": "Character 2 Alt 2 Name",
+				"creators": ["you"],
+				"settings": ["your_characters_setting"],
+				"portrait": {"resource": "portraits_spritesheet", "sx": 384, "sy": 0, "width": 192, "height": 256},
+				"base": {"resource": "characters_spritesheet", "sx": 112, "sy": 140, "width": 48, "height": 116, "origin": {"x": 24, "y": 116}},
+				"details": "Some text about character 2 (specifically alt 2)"
+			}
+		]
+	},
+
+	"combos": {
+	}
+}
