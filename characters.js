@@ -68,7 +68,10 @@ export class Characters extends Scene {
 		this.current_index = -1;
 		this.selected_y_offset = 0;
 		this.selected_scale = 1;
+		//TODO fix spring cursor weight causing a buildup of offset the further from origin we get?
 		this.camera_weight = 0.025;
+		//TODO just temporarily disabling spring cursor weight for now
+		this.camera_weight = 0;
 		this.details = false;
 	}
 	load() {
