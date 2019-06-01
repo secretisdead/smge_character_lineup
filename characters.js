@@ -1150,13 +1150,12 @@ export class Characters extends Scene {
 		else {
 			this.buttons.alternate.disable();
 		}
-		// move camera anchor to center character in non-portrait portion of screen
+		// get half screen width
 		let half_screen_width = this.smge.screen.width / 2;
-		let portrait_to_origin_width = half_screen_width - this.portrait.sprite.width;
-		let non_portrait_width = this.smge.screen.width - this.portrait.sprite.width;
-		let half_non_portrait_width = non_portrait_width / 2;
+		// get portrait to center distance
+		let portrait_to_center = half_screen_width - this.portrait.sprite.width;
 		this.cursor.anchor.transform.move_to(
-			character.transform.x - (half_non_portrait_width - portrait_to_origin_width),
+			character.transform.x - (half_screen_width / 2) + (portrait_to_center / 2),
 			this.cursor.anchor.transform.y,
 			duration
 		);
