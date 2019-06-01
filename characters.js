@@ -348,7 +348,7 @@ export class Characters extends Scene {
 			'character name'
 		);
 		name_text.name = 'character name';
-		name_text.change_layer(3);
+		name_text.change_layer(5);
 		name_text.transform.x = this.smge.screen.width - this.ui_padding - this.name_padding;
 		name_text.transform.y = this.ui_padding + this.name_padding;
 		name_text.transform.parallax.x = 0;
@@ -364,7 +364,7 @@ export class Characters extends Scene {
 			'top'
 		);
 		name_background.name = 'character name background';
-		name_background.change_layer(2);
+		name_background.change_layer(4);
 		name_background.transform.x = this.smge.screen.width - this.ui_padding;
 		name_background.transform.y = this.ui_padding;
 		name_background.transform.parallax.x = 0;
