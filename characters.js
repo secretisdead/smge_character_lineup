@@ -1700,6 +1700,7 @@ export class Characters extends Scene {
 		}
 		for (let i in this.filter_menu.creators) {
 			let creator = this.filter_menu.creators[i];
+			creator.bounds[0].refresh();
 			if (-1 != this.filter.creators.indexOf(creator.id)) {
 				creator.sprite.set_image(creator.dim);
 			}
@@ -1718,6 +1719,7 @@ export class Characters extends Scene {
 		}
 		for (let i in this.filter_menu.settings) {
 			let setting = this.filter_menu.settings[i];
+			setting.bounds[0].refresh();
 			if (-1 != this.filter.settings.indexOf(setting.id)) {
 				setting.sprite.set_image(setting.dim);
 			}
